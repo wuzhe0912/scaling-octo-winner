@@ -1,125 +1,56 @@
 <template lang="pug">
 .about-container
-  form.todo-form(@submit.prevent="handleAdd")
-    label New Todo List
-    .btn-wrap
-      input(v-model="newTodo" name="newTodo")
-      button Add
-    .list-wrap
-      .list-select(v-if="todos.length > 0")
-        div
-          input(type="checkbox" @click="handleAll")
-          span Select All
-        button(@click="handleClear") All Clear
-      .list-container(v-for="(todo, index) in todos" :key="todo.id")
-        .list-content
-          input(type="checkbox" @click="handleCheck(todo)" :checked="todo.status")
-          .list-text(:class="{ 'list-done': todo.status }") {{ todo.text }}
-        button.list-btn(@click="handleDelete(index)") X
+  .list
+    button.list-btn(
+      v-for="node in list"
+      :key="node.code"
+      @click="change(node.code)"
+    ) {{ node.name }}
+  TodoApp(v-if="select === 'todo'")
+  GetPosition(v-if="select === 'getPosition'")
 </template>
 
 <script>
 import { ref } from 'vue';
+import TodoApp from '@/components/TodoApp.vue';
+import GetPosition from '@/components/GetPosition.vue';
 
 export default {
   name: 'About',
 
+  components: {
+    TodoApp,
+    GetPosition,
+  },
+
   setup() {
-    const newTodo = ref('');
-    const todos = ref([]);
+    const list = ref([]);
+    const select = ref('todo');
 
-    const handleAdd = () => {
-      if (newTodo.value !== '') {
-        todos.value.push({
-          id: Date.now(),
-          status: false,
-          text: newTodo.value,
-        });
-        newTodo.value = '';
-      }
-    };
+    list.value = [
+      { name: 'Todo App', code: 'todo' },
+      { name: 'Get Page Position', code: 'getPosition' },
+      { name: 'Get Dog API', code: 'dogApi' },
+      // { name: 'Todo App', code: 'todo' },
+    ];
 
-    const handleCheck = (todo) => {
-      todo.status = !todo.status;
-    };
-
-    const handleDelete = (index) => {
-      todos.value.splice(index, 1);
-    };
-
-    const handleAll = () => {
-      todos.value.forEach((item) => {
-        item.status = !item.status;
-      });
-    };
-
-    const handleClear = () => {
-      todos.value = [];
+    const change = (code) => {
+      select.value = code;
     };
 
     return {
-      newTodo,
-      todos,
-      handleAdd,
-      handleCheck,
-      handleDelete,
-      handleAll,
-      handleClear,
+      list,
+      select,
+      change,
     };
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.about-container {
-  display: flex;
-  justify-content: center;
-}
-
-.todo-form {
-  display: flex;
-  flex-direction: column;
-  width: 360px;
-}
-
-.btn-wrap {
-  display: flex;
-  justify-content: center;
-  input {
-    width: 100%;
-  }
-  button {
-    margin-left: 10px;
-    width: 60px;
-  }
-}
-
-.list-select {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 6px;
-
-  button {
-    cursor: pointer;
-  }
-}
-
-.list-container {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 6px;
-}
-
-.list-content {
-  display: flex;
-}
-
-.list-done {
-  text-decoration: line-through;
-}
-
 .list-btn {
-  color: red;
+  margin-right: 6px;
+  margin-bottom: 12px;
   cursor: pointer;
 }
 </style>

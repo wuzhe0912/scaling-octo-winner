@@ -1,14 +1,11 @@
 <template lang="pug">
-.wrap
-  h1 {{ msg }}
+.position-container
+  div position
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String,
-  },
+  name: 'GetPosition',
 };
 </script>
 

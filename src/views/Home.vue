@@ -1,7 +1,6 @@
 <template lang="pug">
 .home
   img(alt="Vue logo" src="../assets/logo.png")
-  HelloWorld(msg="Welcome to Your Vue.js App")
   div {{ text }}
   div {{ number }}
   div {{ name }}
@@ -10,13 +9,10 @@
 <script>
 // @ is an alias to /src
 import { ref, reactive, toRefs } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue';
 
 export default {
   name: 'Home',
-  components: {
-    HelloWorld,
-  },
+
   setup() {
     const state = reactive({
       text: 'Game!',
