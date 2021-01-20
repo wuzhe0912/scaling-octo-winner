@@ -1,18 +1,38 @@
-<template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+<template lang="pug">
+.home
+  img(alt="Vue logo" src="../assets/logo.png")
+  HelloWorld(msg="Welcome to Your Vue.js App")
+  div {{ text }}
+  div {{ number }}
+  div {{ name }}
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import { ref, reactive, toRefs } from 'vue';
+import HelloWorld from '@/components/HelloWorld.vue';
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
-    HelloWorld
-  }
+    HelloWorld,
+  },
+  setup() {
+    const state = reactive({
+      text: 'Game!',
+      number: 100,
+      name: 'Player',
+    });
+
+    setTimeout(() => {
+      state.text = 'New Game!';
+      state.number = 200;
+      state.name = 'New Player';
+    }, 1500);
+
+    return {
+      ...toRefs(state),
+    };
+  },
 };
 </script>

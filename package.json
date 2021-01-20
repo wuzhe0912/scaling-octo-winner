@@ -1,5 +1,5 @@
 {
-  "name": "vue3-components-demo2",
+  "name": "vue3-components-demo",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -27,7 +27,8 @@
     "eslint-plugin-vue": "^7.0.0-0",
     "node-sass": "^4.12.0",
     "prettier": "^1.19.1",
-    "sass-loader": "^8.0.2"
+    "sass-loader": "^8.0.2",
+    "vue-cli-plugin-pug": "^2.0.0"
   },
   "eslintConfig": {
     "root": true,
