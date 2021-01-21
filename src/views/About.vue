@@ -9,12 +9,14 @@
     ) {{ node.name }}
   TodoApp(v-if="select === 'todo'")
   MousePosition(v-if="select === 'mousePosition'")
+  DogImage(v-if="select === 'dogImage'")
 </template>
 
 <script>
 import { ref } from 'vue';
 import TodoApp from '@/components/TodoApp.vue';
 import MousePosition from '@/components/MousePosition.vue';
+import DogImage from '@/components/DogImage.vue';
 
 export default {
   name: 'About',
@@ -22,6 +24,7 @@ export default {
   components: {
     TodoApp,
     MousePosition,
+    DogImage,
   },
 
   setup() {
@@ -32,7 +35,7 @@ export default {
     list.value = [
       { name: 'Todo App', code: 'todo' },
       { name: 'Get Page Position', code: 'mousePosition' },
-      { name: 'Get Dog API', code: 'dogApi' },
+      { name: 'Get Dog Image', code: 'dogImage' },
       // { name: 'Todo App', code: 'todo' },
     ];
 

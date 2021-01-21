@@ -4,10 +4,20 @@
 </template>
 
 <script>
+import { useMousePosition } from '../hooks/useMousePosition.js';
+
 export default {
-  name: 'GetPosition',
+  name: 'MousePosition',
+
+  setup() {
+    const { x, y } = useMousePosition();
+
+    return {
+      x,
+      y,
+    };
+  },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss"></style>
