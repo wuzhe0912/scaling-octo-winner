@@ -1,6 +1,6 @@
 <template lang="pug">
 .position-container
-  div position
+  div 網頁X座標：{{ x }} - 網頁Y座標：{{ y }}
 </template>
 
 <script>

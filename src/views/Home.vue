@@ -8,7 +8,7 @@
 
 <script>
 // @ is an alias to /src
-import { ref, reactive, toRefs } from 'vue';
+import { reactive, toRefs } from 'vue';
 
 export default {
   name: 'Home',

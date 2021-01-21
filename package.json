@@ -40,10 +40,19 @@
       "eslint:recommended",
       "@vue/prettier"
     ],
+    "rules": {
+      "prettier/prettier": [
+        "warn",
+        {
+          "singleQuote": true,
+          "trailingComma": "all",
+          "arrowParens": "always"
+        }
+      ]
+    },
     "parserOptions": {
       "parser": "babel-eslint"
-    },
-    "rules": {}
+    }
   },
   "browserslist": [
     "> 1%",
