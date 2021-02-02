@@ -1,6 +1,6 @@
 <template lang="pug">
 .home
-  img(alt="Vue logo" src="../assets/logo.png")
+  img(alt="Vue logo" src="../assets/logo.png" ref="imgRef")
   div {{ text }}
   div {{ number }}
   div {{ name }}
@@ -8,7 +8,7 @@
 
 <script>
 // @ is an alias to /src
-import { reactive, toRefs } from 'vue';
+import { ref, reactive, toRefs, onMounted } from 'vue';
 
 export default {
   name: 'Home',
@@ -19,6 +19,11 @@ export default {
       number: 100,
       name: 'Player',
     });
+    const imgRef = ref(null);
+
+    onMounted(() => {
+      console.log(imgRef.value);
+    });
 
     setTimeout(() => {
       state.text = 'New Game!';
@@ -28,6 +33,7 @@ export default {
 
     return {
       ...toRefs(state),
+      imgRef,
     };
   },
 };

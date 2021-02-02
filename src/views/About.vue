@@ -10,6 +10,7 @@
   TodoApp(v-if="select === 'todo'")
   MousePosition(v-if="select === 'mousePosition'")
   DogImage(v-if="select === 'dogImage'")
+  Puzzle(v-if="select === 'puzzle'")
 </template>
 
 <script>
@@ -17,6 +18,7 @@ import { ref } from 'vue';
 import TodoApp from '@/components/TodoApp.vue';
 import MousePosition from '@/components/MousePosition.vue';
 import DogImage from '@/components/DogImage.vue';
+import Puzzle from '@/components/Puzzle.vue';
 
 export default {
   name: 'About',
@@ -25,6 +27,7 @@ export default {
     TodoApp,
     MousePosition,
     DogImage,
+    Puzzle,
   },
 
   setup() {
@@ -36,7 +39,7 @@ export default {
       { name: 'Todo App', code: 'todo' },
       { name: 'Get Page Position', code: 'mousePosition' },
       { name: 'Get Dog Image', code: 'dogImage' },
-      // { name: 'Todo App', code: 'todo' },
+      { name: 'Puzzle Game', code: 'puzzle' },
     ];
 
     const change = (code, index) => {
